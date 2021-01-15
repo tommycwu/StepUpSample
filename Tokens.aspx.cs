@@ -100,7 +100,9 @@ namespace StepUpSample
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("https://ciam.oktapreview.com/home/ciam_mfaasaservice_2/0oa9rl65ajmpa2DvB1d6/aln9rm0ijoQFoLJ2U1d6");
+            //Response.Redirect("https://ciam.oktapreview.com/home/ciam_mfaasaservice_2/0oa9rl65ajmpa2DvB1d6/aln9rm0ijoQFoLJ2U1d6");
+            //Response.Redirect("https://ciam.oktapreview.com/oauth2/v1/authorize?client_id=0oa9rk756IOpj8vri1d6&redirect_uri=https%3A%2F%2Flocalhost%3A44363%2Fauthorize%2Fcallback.aspx&response_type=token&response_mode=fragment&state=state&nonce=nonce&scope=openid");
+            Response.Redirect("https://ciam.oktapreview.com/oauth2/v1/authorize?client_id=0oa9rk756IOpj8vri1d6&redirect_uri=https%3A%2F%2Flocalhost%3A44363%2Fauthorize%2Fcallback.aspx&response_type=code&response_mode=fragment&state=state&nonce=nonce&scope=openid");
         }
     }
 }

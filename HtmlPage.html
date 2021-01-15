@@ -1,0 +1,46 @@
+﻿<!-- See: https://developer.okta.com/code/javascript/okta_auth_sdk/ -->
+<html>
+<head>
+    <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-auth-js/2.0.1/okta-auth-js.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <script>
+var authClient = new OktaAuth({
+    url: 'https://ciam.oktapreview.com',
+    clientId: '0oa9rk756IOpj8vri1d6',
+    redirectUri: 'https://localhost:44363',
+});
+
+async function main() {
+  // Attempt to retrieve ID Token from Token Manager
+  var token = await authClient.tokenManager.get('idToken');
+  // If ID Token exists, output it to the console
+  if (token) {
+    console.log(`hi ${token.claims.email}! the token is already in the manager (localStorage)`);
+    var session = await authClient.session.get();
+    console.log('Session ID is', session.id);
+  }
+  else if (location.hash) {
+    // If ID Token isn't found, try to parse it from the current URL
+    var token = await authClient.token.parseFromUrl();
+    var idToken = token[0];
+    var accessToken = token[1];
+    console.log(`hi ${idToken.claims.email}! (got tokens from URL)`);
+    // Store parsed token in Token Manager
+    authClient.tokenManager.add('idToken', idToken);
+    authClient.tokenManager.add('accessToken', accessToken);
+    console.log('here\'s the idToken from the tokenManager (stored in okta-token-storage in localStorage):');
+    console.log(token);
+  } else {
+    // You're not logged in, you need a sessionToken
+    console.log('not logged in, redirecting to /authorize endpoint');
+    authClient.token.getWithRedirect({
+      responseType: ['id_token', 'token'],
+      // idp: '',  // to use an external IdP
+    });
+  }
+}
+
+main();
+    </script>
+</body>

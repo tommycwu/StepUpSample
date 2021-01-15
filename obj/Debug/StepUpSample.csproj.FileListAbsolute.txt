@@ -95,3 +95,5 @@ C:\Users\Tommy\source\repos\StepUpSample\bin\Microsoft.Owin.Security.Cookies.dll
 C:\Users\Tommy\source\repos\StepUpSample\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\Tommy\source\repos\StepUpSample\bin\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\Tommy\source\repos\StepUpSample\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Tommy\source\repos\StepUpSample\bin\RestSharp.dll
+C:\Users\Tommy\source\repos\StepUpSample\bin\RestSharp.xml
